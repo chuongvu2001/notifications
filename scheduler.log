@@ -1,0 +1,24 @@
+done
+done
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'chuongvu2806200111111111@gmail.com' for key 'users_email_unique' (SQL: insert into `users` (`name`, `email`, `password`, `updated_at`, `created_at`) values (Hu7NoMVo, chuongvu2806200111111111@gmail.com, $2y$10$UUJkmYdo0lglZ1umU2luzOpEZDVjt5mseRS4tsVtXkRGbRxLjXS7u, 2022-04-22 17:09:00, 2022-04-22 17:09:00))
+
+  at D:\xampp\htdocs\notification\vendor\laravel\framework\src\Illuminate\Database\Connection.php:745
+    741▕         // If an exception occurs when attempting to run a query, we'll format the error
+    742▕         // message to include the bindings with SQL, which will make this exception a
+    743▕         // lot more helpful to the developer instead of just the database's errors.
+    744▕         catch (Exception $e) {
+  ➜ 745▕             throw new QueryException(
+    746▕                 $query, $this->prepareBindings($bindings), $e
+    747▕             );
+    748▕         }
+    749▕     }
+
+  1   D:\xampp\htdocs\notification\vendor\laravel\framework\src\Illuminate\Database\Connection.php:530
+      PDOException::("SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'chuongvu2806200111111111@gmail.com' for key 'users_email_unique'")
+
+  2   D:\xampp\htdocs\notification\vendor\laravel\framework\src\Illuminate\Database\Connection.php:530
+      PDOStatement::execute()
+done
