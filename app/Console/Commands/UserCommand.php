@@ -3,7 +3,9 @@
 namespace App\Console\Commands;
 
 use App\Models\User;
+use App\Notifications\SendEmailNotification;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Str;
 
 class UserCommand extends Command
@@ -31,10 +33,11 @@ class UserCommand extends Command
     {
         User::create([
             'name' => Str::random(8),
-            'email' => 'chun@gmail.com',
+            'email' => 'chdddnnnnnun@gmail.com',
             'password' => bcrypt('12345678'),
             'email_verified_at' => now()
         ]);
+
         $this->info('done');
     }
 }

@@ -2,29 +2,35 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Notifications\DatabaseNotification;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Notification;
-use App\Notifications\SendEmailNotification;
-use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
-    //
-    public function sendNotification()
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
     {
-        $users = User::all();
+        $this->middleware('auth');
+    }
 
-        $details = [
-            'greeting' => Str::random(10),
-            'body' => Str::random(15),
-            'actiontext' => Str::random(30),
-            'actionurl' => '/',
-            'lastline' => Str::random(5),
-        ];
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function index()
+    {
+        return view('home');
+    }
 
-        Notification::send($users, new SendEmailNotification($details));
-
+    public function sendNotificationDatabase()
+    {
+        auth()->user()->notify(new DatabaseNotification(Auth::user()));
         dd('done');
     }
 }
